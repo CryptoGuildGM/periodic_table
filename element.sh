@@ -13,19 +13,19 @@ fi
 re='^[0-9]+$'
 if [[  $1 =~ $re ]]
 then
-  FIND_ELEMENT_RESULT=$($PSQL "SELECT * FROM elements INNER JOIN properties USING(atomic_number) INNER JOIN types USING(type_id) WHERE atomic_number=$1")
+  FIND_ELEMENT_BY_NUMBER_RESULT=$($PSQL "SELECT * FROM elements INNER JOIN properties USING(atomic_number) INNER JOIN types USING(type_id) WHERE atomic_number=$1")
 
   #if no element found
-  if [[  -z $FIND_ELEMENT_RESULT  ]]
+  if [[  -z $FIND_ELEMENT_BY_NUMBER_RESULT  ]]
   then
     echo "I could not find that element in the database."
     exit
   fi
 
   #output the result
-  echo $FIND_ELEMENT_RESULT | while IFS=" |" read TYPE_ID NUMBER SYMBOL NAME MASS MELTING_POINT BOILING_POINT TYPE
+  echo $FIND_ELEMENT_BY_NUMBER_RESULT | while IFS=" |" read TYPE_ID NUMBER SYMBOL NAME MASS MELTING_POINT BOILING_POINT TYPE
     do
-      echo "The element with atomic number $1 is $NAME. It's a $TYPE, with a mass of $MASS amu. $NAME has a melting point of $MELTING_POINT celsius and a boiling point of $BOILING_POINT celsius."
+      echo "The element with atomic number $NUMBER is $NAME. It's a $TYPE, with a mass of $MASS amu. $NAME has a melting point of $MELTING_POINT celsius and a boiling point of $BOILING_POINT celsius."
     done 
 fi
 
@@ -33,19 +33,19 @@ fi
 re2='^[ABC]+$'
 if [[  $1 =~ $re2 ]]
 then
-  FIND_ELEMENT_RESULT=$($PSQL "SELECT * FROM elements INNER JOIN properties USING(atomic_number) INNER JOIN types USING(type_id) WHERE symbol='$1'")
+  FIND_ELEMENT_BY_SYMBOL_RESULT=$($PSQL "SELECT * FROM elements INNER JOIN properties USING(atomic_number) INNER JOIN types USING(type_id) WHERE symbol='$1'")
   
   #if no element found
-  if [[  -z $FIND_ELEMENT_RESULT  ]]
+  if [[  -z $FIND_ELEMENT_BY_SYMBOL_RESULT  ]]
   then
     echo "I could not find that element in the database."
     exit
   fi
 
   #output the result
-  echo $FIND_ELEMENT_RESULT | while IFS=" |" read TYPE_ID NUMBER SYMBOL NAME MASS MELTING_POINT BOILING_POINT TYPE
+  echo $FIND_ELEMENT_BY_SYMBOL_RESULT | while IFS=" |" read TYPE_ID NUMBER SYMBOL NAME MASS MELTING_POINT BOILING_POINT TYPE
     do
-      echo "The element with atomic number $1 is $NAME. It's a $TYPE, with a mass of $MASS amu. $NAME has a melting point of $MELTING_POINT celsius and a boiling point of $BOILING_POINT celsius."
+      echo "The element with atomic number $NUMBER is $NAME. It's a $TYPE, with a mass of $MASS amu. $NAME has a melting point of $MELTING_POINT celsius and a boiling point of $BOILING_POINT celsius."
     done 
 fi
 
