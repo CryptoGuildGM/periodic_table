@@ -30,11 +30,11 @@ then
 fi
 
 #if atomic symbol
-re2='^[ABC]+$'
+re2='^[A-Z]+'
 if [[  $1 =~ $re2 ]]
 then
   FIND_ELEMENT_BY_SYMBOL_RESULT=$($PSQL "SELECT * FROM elements INNER JOIN properties USING(atomic_number) INNER JOIN types USING(type_id) WHERE symbol='$1'")
-  
+  #
   #if no element found
   if [[  -z $FIND_ELEMENT_BY_SYMBOL_RESULT  ]]
   then
@@ -50,4 +50,6 @@ then
 fi
 
 #if name
+
+
 #if no element found
