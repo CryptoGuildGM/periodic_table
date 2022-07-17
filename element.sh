@@ -26,7 +26,7 @@ then
   #output the result
   echo $FIND_ELEMENT_BY_NUMBER_RESULT | while IFS=" |" read TYPE_ID NUMBER SYMBOL NAME MASS MELTING_POINT BOILING_POINT TYPE
     do
-      echo "The element with atomic number $NUMBER is $NAME. It's a $TYPE, with a mass of $MASS amu. $NAME has a melting point of $MELTING_POINT celsius and a boiling point of $BOILING_POINT celsius."
+      echo "The element with atomic number $NUMBER is $NAME ($SYMBOL). It's a $TYPE, with a mass of $MASS amu. $NAME has a melting point of $MELTING_POINT celsius and a boiling point of $BOILING_POINT celsius."
     done 
 fi
 
@@ -46,7 +46,7 @@ then
   #output the result
   echo $FIND_ELEMENT_BY_SYMBOL_RESULT | while IFS=" |" read TYPE_ID NUMBER SYMBOL NAME MASS MELTING_POINT BOILING_POINT TYPE
     do
-      echo "The element with atomic number $NUMBER is $NAME. It's a $TYPE, with a mass of $MASS amu. $NAME has a melting point of $MELTING_POINT celsius and a boiling point of $BOILING_POINT celsius."
+      echo "The element with atomic number $NUMBER is $NAME ($SYMBOL). It's a $TYPE, with a mass of $MASS amu. $NAME has a melting point of $MELTING_POINT celsius and a boiling point of $BOILING_POINT celsius."
     done 
 fi
 
@@ -65,6 +65,6 @@ then
   #output the result
   echo $FIND_ELEMENT_BY_NAME_RESULT | while IFS=" |" read TYPE_ID NUMBER SYMBOL NAME MASS MELTING_POINT BOILING_POINT TYPE
     do
-      echo "The element with atomic number $NUMBER is $NAME. It's a $TYPE, with a mass of $MASS amu. $NAME has a melting point of $MELTING_POINT celsius and a boiling point of $BOILING_POINT celsius."
+      echo "The element with atomic number $NUMBER is $NAME ($SYMBOL). It's a $TYPE, with a mass of $MASS amu. $NAME has a melting point of $MELTING_POINT celsius and a boiling point of $BOILING_POINT celsius."
     done 
 fi
