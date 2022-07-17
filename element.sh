@@ -7,6 +7,7 @@ PSQL="psql -X --username=freecodecamp --dbname=periodic_table --tuples-only -c"
 if [[  -z $1  ]]
 then
   echo "Please provide an element as an argument."
+  exit
 fi
 
 #if atomic number 
@@ -54,7 +55,6 @@ re3='^[A-Z]*'
 if [[  $1 =~ $re3 ]]
 then
   FIND_ELEMENT_BY_NAME_RESULT=$($PSQL "SELECT * FROM elements INNER JOIN properties USING(atomic_number) INNER JOIN types USING(type_id) WHERE name='$1'")
-  echo $1
   #if no element found
   if [[  -z $FIND_ELEMENT_BY_NAME_RESULT  ]]
   then
