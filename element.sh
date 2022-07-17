@@ -31,7 +31,7 @@ then
 fi
 
 #if atomic symbol
-re2='^[A-Z]\w$'
+re2='[A-Z]\w?$'
 if [[  $1 =~ $re2 ]]
 then
   FIND_ELEMENT_BY_SYMBOL_RESULT=$($PSQL "SELECT * FROM elements INNER JOIN properties USING(atomic_number) INNER JOIN types USING(type_id) WHERE symbol='$1'")
@@ -47,7 +47,8 @@ then
   echo $FIND_ELEMENT_BY_SYMBOL_RESULT | while IFS=" |" read TYPE_ID NUMBER SYMBOL NAME MASS MELTING_POINT BOILING_POINT TYPE
     do
       echo "The element with atomic number $NUMBER is $NAME ($SYMBOL). It's a $TYPE, with a mass of $MASS amu. $NAME has a melting point of $MELTING_POINT celsius and a boiling point of $BOILING_POINT celsius."
-    done 
+    done
+  exit   
 fi
 
 #if name
