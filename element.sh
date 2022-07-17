@@ -28,6 +28,7 @@ then
     do
       echo "The element with atomic number $NUMBER is $NAME ($SYMBOL). It's a $TYPE, with a mass of $MASS amu. $NAME has a melting point of $MELTING_POINT celsius and a boiling point of $BOILING_POINT celsius."
     done 
+  exit  
 fi
 
 #if atomic symbol
